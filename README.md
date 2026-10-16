@@ -16,7 +16,8 @@ switch English/Arabic, and choose light/dark themes.
 - Dio + Retrofit TheMealDB integration with SharedPreferences cache fallback.
 - Meal details with category, origin, instructions, favourite, and cart actions.
 - Firestore-backed favourites, orders, and singleton data service.
-- Reactive cart count, quantity updates, removal, and order placement.
+- Reactive cart count, quantity updates, removal, payment selection, and order
+  placement. Cash and card strategies implement a shared payment contract.
 - Light/dark theme switching using persisted `ThemeCubit` state.
 - Nearby vendor map bonus screen with five sample locations.
 
@@ -37,8 +38,8 @@ Patterns used:
 
 - **Builder:** `UserEntityBuilder` keeps authenticated profile construction
   explicit and extensible.
-- **Factory:** `MealDataSourceFactory` applies network-first/cache-fallback
-  source selection.
+- **Factory:** `MealRepositoryFactory` selects a remote or cached repository
+  implementation based on normal loading versus explicit refresh.
 - **Singleton:** `FirestoreService.instance` provides one user-data gateway.
 - **Dependency injection:** GetIt wires interfaces, data sources, repositories,
   use cases, and Cubits in one composition root.

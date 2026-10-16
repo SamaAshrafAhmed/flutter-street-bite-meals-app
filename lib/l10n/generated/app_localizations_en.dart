@@ -234,6 +234,15 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get paymentMethod => 'Payment method';
+
+  @override
+  String get cashPayment => 'Cash';
+
+  @override
+  String get cardPayment => 'Card';
+
+  @override
   String get cairoVendor => 'Cairo Street Bites';
 
   @override

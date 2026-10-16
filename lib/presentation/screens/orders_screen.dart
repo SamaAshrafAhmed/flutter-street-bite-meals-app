@@ -27,15 +27,34 @@ class OrdersScreen extends StatelessWidget {
             separatorBuilder: (_, _) => const SizedBox(height: 10),
             itemBuilder: (context, index) {
               final data = orders[index].data();
+              final items = (data['items'] as List<dynamic>?) ?? const [];
+              final paymentMethod = data['paymentMethod'] == 'card'
+                  ? context.l10n.cardPayment
+                  : context.l10n.cashPayment;
               return Card(
-                child: ListTile(
+                child: ExpansionTile(
                   leading: const CircleAvatar(
                     child: Icon(Icons.receipt_long_rounded),
                   ),
                   title: Text('${context.l10n.placeOrder} #${index + 1}'),
                   subtitle: Text(
-                    context.l10n.itemsCount((data['itemCount'] as int?) ?? 0),
+                    '${context.l10n.itemsCount((data['itemCount'] as int?) ?? 0)} • '
+                    '$paymentMethod',
                   ),
+                  children: [
+                    for (final rawItem in items)
+                      if (rawItem is Map<String, dynamic>)
+                        ListTile(
+                          dense: true,
+                          leading: const Icon(Icons.fastfood_outlined),
+                          title: Text(
+                            (rawItem['meal'] as Map<String, dynamic>?)?['name']
+                                    as String? ??
+                                context.l10n.appName,
+                          ),
+                          trailing: Text('×${rawItem['quantity'] ?? 1}'),
+                        ),
+                  ],
                 ),
               );
             },

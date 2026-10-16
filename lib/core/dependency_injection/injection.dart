@@ -2,11 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:street_bite/data/datasources/firebase_auth_datasource.dart';
-import 'package:street_bite/data/datasources/meal_datasource_factory.dart';
 import 'package:street_bite/data/datasources/meal_local_datasource.dart';
 import 'package:street_bite/data/datasources/meal_remote_datasource.dart';
 import 'package:street_bite/data/repositories/auth_repository_impl.dart';
-import 'package:street_bite/data/repositories/meal_repository_impl.dart';
+import 'package:street_bite/data/repositories/meal_repository_factory.dart';
 import 'package:street_bite/domain/repositories/auth_repository.dart';
 import 'package:street_bite/domain/repositories/meal_repository.dart';
 import 'package:street_bite/domain/usecases/get_meals_usecase.dart';
@@ -69,11 +68,11 @@ Future<void> setupDependencies() async {
   getIt.registerLazySingleton<MealLocalDataSource>(
     () => MealLocalDataSource(getIt()),
   );
-  getIt.registerLazySingleton<MealDataSourceFactory>(
-    () => MealDataSourceFactory(remote: getIt(), local: getIt()),
+  getIt.registerLazySingleton<MealRepositoryFactory>(
+    () => MealRepositoryFactory(remote: getIt(), local: getIt()),
   );
   getIt.registerLazySingleton<MealRepository>(
-    () => MealRepositoryImpl(getIt<MealDataSourceFactory>()),
+    () => FactoryMealRepository(getIt<MealRepositoryFactory>()),
   );
   getIt.registerFactory<GetMealsUseCase>(() => GetMealsUseCase(getIt()));
   getIt.registerLazySingleton<MealsCubit>(() => MealsCubit(getIt()));

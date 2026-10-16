@@ -5,6 +5,7 @@ class MealModel {
   final String name;
   final String category;
   final String area;
+  final String country;
   final String thumbnailUrl;
   final String instructions;
 
@@ -13,6 +14,7 @@ class MealModel {
     required this.name,
     required this.category,
     required this.area,
+    this.country = '',
     required this.thumbnailUrl,
     this.instructions = '',
   });
@@ -22,6 +24,7 @@ class MealModel {
     name: (json['strMeal'] as String?) ?? '',
     category: (json['strCategory'] as String?) ?? '',
     area: (json['strArea'] as String?) ?? '',
+    country: (json['strCountry'] as String?) ?? '',
     thumbnailUrl: (json['strMealThumb'] as String?) ?? '',
     instructions: (json['strInstructions'] as String?) ?? '',
   );
@@ -31,6 +34,7 @@ class MealModel {
     'strMeal': name,
     'strCategory': category,
     'strArea': area,
+    'strCountry': country,
     'strMealThumb': thumbnailUrl,
     'strInstructions': instructions,
   };
@@ -40,6 +44,7 @@ class MealModel {
     name: name,
     category: category,
     area: area,
+    country: country,
     thumbnailUrl: thumbnailUrl,
     instructions: instructions,
   );
