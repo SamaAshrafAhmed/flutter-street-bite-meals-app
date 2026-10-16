@@ -1,4 +1,4 @@
- import 'package:street_bite/l10n/generated/app_localizations.dart';
+import 'package:street_bite/l10n/generated/app_localizations.dart';
 
 class Validators {
   Validators._();

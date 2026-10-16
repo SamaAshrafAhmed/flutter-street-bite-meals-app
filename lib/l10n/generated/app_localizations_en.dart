@@ -65,6 +65,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileTab => 'Profile';
 
   @override
+  String get ordersTab => 'Orders';
+
+  @override
   String get profileTitle => 'Profile';
 
   @override
@@ -196,4 +199,67 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get mealsError => 'Unable to load meals';
+
+  @override
+  String get favoriteAction => 'Save favorite';
+
+  @override
+  String get instructionsLabel => 'Instructions';
+
+  @override
+  String get instructionsUnavailable =>
+      'Instructions are unavailable right now.';
+
+  @override
+  String get nearbyVendors => 'Nearby Vendors';
+
+  @override
+  String get ratingFive => 'Rating 5.0';
+
+  @override
+  String get placeOrder => 'Place order';
+
+  @override
+  String get orderPlaced => 'Order placed successfully';
+
+  @override
+  String get ordersHistory => 'Order history';
+
+  @override
+  String get noOrders => 'No orders yet';
+
+  @override
+  String itemsCount(int count) {
+    return '$count items';
+  }
+
+  @override
+  String get cairoVendor => 'Cairo Street Bites';
+
+  @override
+  String get alexandriaVendor => 'Alexandria Grill';
+
+  @override
+  String get dubaiVendor => 'Dubai Shawarma';
+
+  @override
+  String get ammanVendor => 'Amman Falafel';
+
+  @override
+  String get riyadhVendor => 'Riyadh Bites';
+
+  @override
+  String get egyptianCuisine => 'Egyptian';
+
+  @override
+  String get mediterraneanCuisine => 'Mediterranean';
+
+  @override
+  String get arabianCuisine => 'Arabian';
+
+  @override
+  String get levantineCuisine => 'Levantine';
+
+  @override
+  String get saudiCuisine => 'Saudi';
 }

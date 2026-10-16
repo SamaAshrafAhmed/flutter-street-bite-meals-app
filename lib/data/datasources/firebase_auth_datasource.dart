@@ -15,11 +15,11 @@ class FirebaseAuthDataSource {
       password: password,
     );
     final user = credential.user!;
-    return UserEntity(
-      id: user.uid,
-      email: user.email!,
-      displayName: user.displayName,
-    );
+    return UserEntityBuilder()
+        .id(user.uid)
+        .email(user.email!)
+        .displayName(user.displayName)
+        .build();
   }
 
   Future<UserEntity> signUp({
@@ -33,7 +33,11 @@ class FirebaseAuthDataSource {
     );
     final user = credential.user!;
     await user.updateDisplayName(name);
-    return UserEntity(id: user.uid, email: user.email!, displayName: name);
+    return UserEntityBuilder()
+        .id(user.uid)
+        .email(user.email!)
+        .displayName(name)
+        .build();
   }
 
   Future<void> logout() => _auth.signOut();

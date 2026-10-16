@@ -206,6 +206,12 @@ abstract class AppLocalizations {
   /// **'Profile'**
   String get profileTab;
 
+  /// No description provided for @ordersTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get ordersTab;
+
   /// No description provided for @profileTitle.
   ///
   /// In en, this message translates to:
@@ -469,6 +475,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unable to load meals'**
   String get mealsError;
+
+  /// No description provided for @favoriteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Save favorite'**
+  String get favoriteAction;
+
+  /// No description provided for @instructionsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions'**
+  String get instructionsLabel;
+
+  /// No description provided for @instructionsUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions are unavailable right now.'**
+  String get instructionsUnavailable;
+
+  /// No description provided for @nearbyVendors.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearby Vendors'**
+  String get nearbyVendors;
+
+  /// No description provided for @ratingFive.
+  ///
+  /// In en, this message translates to:
+  /// **'Rating 5.0'**
+  String get ratingFive;
+
+  /// No description provided for @placeOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place order'**
+  String get placeOrder;
+
+  /// No description provided for @orderPlaced.
+  ///
+  /// In en, this message translates to:
+  /// **'Order placed successfully'**
+  String get orderPlaced;
+
+  /// No description provided for @ordersHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Order history'**
+  String get ordersHistory;
+
+  /// No description provided for @noOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'No orders yet'**
+  String get noOrders;
+
+  /// No description provided for @itemsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} items'**
+  String itemsCount(int count);
+
+  /// No description provided for @cairoVendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Cairo Street Bites'**
+  String get cairoVendor;
+
+  /// No description provided for @alexandriaVendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Alexandria Grill'**
+  String get alexandriaVendor;
+
+  /// No description provided for @dubaiVendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Dubai Shawarma'**
+  String get dubaiVendor;
+
+  /// No description provided for @ammanVendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Amman Falafel'**
+  String get ammanVendor;
+
+  /// No description provided for @riyadhVendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Riyadh Bites'**
+  String get riyadhVendor;
+
+  /// No description provided for @egyptianCuisine.
+  ///
+  /// In en, this message translates to:
+  /// **'Egyptian'**
+  String get egyptianCuisine;
+
+  /// No description provided for @mediterraneanCuisine.
+  ///
+  /// In en, this message translates to:
+  /// **'Mediterranean'**
+  String get mediterraneanCuisine;
+
+  /// No description provided for @arabianCuisine.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabian'**
+  String get arabianCuisine;
+
+  /// No description provided for @levantineCuisine.
+  ///
+  /// In en, this message translates to:
+  /// **'Levantine'**
+  String get levantineCuisine;
+
+  /// No description provided for @saudiCuisine.
+  ///
+  /// In en, this message translates to:
+  /// **'Saudi'**
+  String get saudiCuisine;
 }
 
 class _AppLocalizationsDelegate

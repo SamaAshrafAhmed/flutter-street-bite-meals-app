@@ -17,6 +17,12 @@ class MealRepositoryImpl implements MealRepository {
     final models = await _factory.getMeals();
     return models.map((m) => m.toEntity()).toList();
   }
+
+  @override
+  Future<MealEntity> getMealById(String id) async {
+    final model = await _factory.getMealById(id);
+    return model.toEntity();
+  }
 }
 
 /*

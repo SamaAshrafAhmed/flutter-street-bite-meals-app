@@ -4,6 +4,7 @@ class MealEntity {
   final String category;
   final String area;
   final String thumbnailUrl;
+  final String instructions;
 
   const MealEntity({
     required this.id,
@@ -11,5 +12,6 @@ class MealEntity {
     required this.category,
     required this.area,
     required this.thumbnailUrl,
+    this.instructions = '',
   });
 }

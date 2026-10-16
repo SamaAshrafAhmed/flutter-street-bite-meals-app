@@ -16,6 +16,7 @@ import 'package:street_bite/domain/usecases/sign_up_usecase.dart';
 import 'package:street_bite/presentation/cubit/auth_cubit.dart';
 import 'package:street_bite/presentation/cubit/cart_cubit.dart';
 import 'package:street_bite/presentation/cubit/meals_cubit.dart';
+import 'package:street_bite/presentation/cubit/favorites_cubit.dart';
 import 'package:street_bite/presentation/cubit/splash_cubit.dart';
 import '../api/api_endpoints.dart';
 import '../api/api_services.dart';
@@ -76,4 +77,5 @@ Future<void> setupDependencies() async {
   );
   getIt.registerFactory<GetMealsUseCase>(() => GetMealsUseCase(getIt()));
   getIt.registerLazySingleton<MealsCubit>(() => MealsCubit(getIt()));
+  getIt.registerFactory<FavoritesCubit>(() => FavoritesCubit());
 }

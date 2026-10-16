@@ -115,8 +115,14 @@ class ProfileBodyWidget extends StatelessWidget {
           const SizedBox(height: 8),
           SegmentedButton<String>(
             segments: [
-              ButtonSegment(value: 'en', label: Text(context.l10n.languageEnglish)),
-              ButtonSegment(value: 'ar', label: Text(context.l10n.languageArabic)),
+              ButtonSegment(
+                value: 'en',
+                label: Text(context.l10n.languageEnglish),
+              ),
+              ButtonSegment(
+                value: 'ar',
+                label: Text(context.l10n.languageArabic),
+              ),
             ],
             selected: {localeNotifier.value.languageCode},
             onSelectionChanged: (selected) =>
