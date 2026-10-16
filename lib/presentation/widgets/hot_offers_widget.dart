@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:street_bite/presentation/cubit/cart_cubit.dart';
 
-
 import '../../domain/entities/meal_entity.dart';
 import '../../core/utils/localization.dart';
 
@@ -121,9 +120,7 @@ class _HotOfferCard extends StatelessWidget {
                         context.read<CartCubit>().addItem(meal);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text(
-                              context.l10n.addedToCart(meal.name),
-                            ),
+                            content: Text(context.l10n.addedToCart(meal.name)),
                             duration: const Duration(seconds: 2),
                             behavior: SnackBarBehavior.floating,
                           ),

@@ -8,6 +8,7 @@ import '../cubit/meals_state.dart';
 import '../widgets/featured_banner_widget.dart';
 import '../widgets/hot_offers_widget.dart';
 import '../widgets/meal_card_widget.dart';
+import 'vendor_map_screen.dart';
 import '../../core/utils/localization.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,6 +24,14 @@ class HomeScreen extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           actions: [
+            IconButton(
+              tooltip: context.l10n.nearbyVendors,
+              icon: const Icon(Icons.map_outlined),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const VendorMapScreen()),
+              ),
+            ),
             BlocBuilder<ThemeCubit, ThemeMode>(
               builder: (ctx, mode) {
                 final isDark =

@@ -38,6 +38,13 @@ class MealRemoteDataSource {
     return meals;
   }
 
+  Future<MealModel> getMealById(String id) async {
+    final response = await _apiServices.getMealById(id);
+    final meals = response.meals ?? const [];
+    if (meals.isEmpty) throw Exception('Meal not found');
+    return meals.first;
+  }
+
   // Fetch meals by specific letter.
   Future<List<MealModel>> _fetchByLetter(String letter) async {
     final response = await _apiServices.getMealsByLetter(letter);

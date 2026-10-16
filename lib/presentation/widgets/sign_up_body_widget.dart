@@ -67,11 +67,10 @@ class _SignUpBodyWidgetState extends State<SignUpBodyWidget> {
                       const SizedBox(width: 10),
                       Text(
                         context.l10n.appName,
-                        style: Theme.of(context).textTheme.titleLarge
-                            ?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                       ),
                     ],
                   ),

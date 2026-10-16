@@ -3,6 +3,8 @@ import 'package:street_bite/core/utils/localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/cart_cubit.dart';
 import '../cubit/cart_state.dart';
+import '../../data/models/meal_model.dart';
+import '../../data/services/firestore_service.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -38,63 +40,103 @@ class CartScreen extends StatelessWidget {
             );
           }
 
-          return ListView.separated(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            itemCount: state.items.length,
-            separatorBuilder: (_, _) => const Divider(height: 1),
-            itemBuilder: (ctx, idx) {
-              final item = state.items[idx];
-              return ListTile(
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 8,
+          return Column(
+            children: [
+              Expanded(
+                child: ListView.separated(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  itemCount: state.items.length,
+                  separatorBuilder: (_, _) => const Divider(height: 1),
+                  itemBuilder: (ctx, idx) {
+                    final item = state.items[idx];
+                    return ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.network(
+                          item.meal.thumbnailUrl,
+                          width: 56,
+                          height: 56,
+                          fit: BoxFit.cover,
+                          errorBuilder: (ctx, _, _) => Container(
+                            width: 56,
+                            height: 56,
+                            color: Theme.of(
+                              ctx,
+                            ).colorScheme.surfaceContainerHighest,
+                            child: const Icon(
+                              Icons.broken_image_outlined,
+                              size: 24,
+                            ),
+                          ),
+                        ),
+                      ),
+                      title: Text(
+                        item.meal.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      subtitle: Text(
+                        item.meal.category,
+                        style: Theme.of(ctx).textTheme.bodySmall,
+                      ),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            '×${item.quantity}',
+                            style: Theme.of(ctx).textTheme.titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          IconButton(
+                            tooltip: context.l10n.removeItem,
+                            icon: Icon(
+                              Icons.remove_circle_outline_rounded,
+                              color: Theme.of(ctx).colorScheme.error,
+                            ),
+                            onPressed: () =>
+                                ctx.read<CartCubit>().removeItem(item.meal.id),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
-                leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    item.meal.thumbnailUrl,
-                    width: 56,
-                    height: 56,
-                    fit: BoxFit.cover,
-                    errorBuilder: (ctx, _, _) => Container(
-                      width: 56,
-                      height: 56,
-                      color: Theme.of(ctx).colorScheme.surfaceContainerHighest,
-                      child: const Icon(Icons.broken_image_outlined, size: 24),
-                    ),
+              ),
+              SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: FilledButton.icon(
+                    onPressed: () async {
+                      await FirestoreService.instance.saveOrder(
+                        meals: state.items
+                            .map(
+                              (item) => MealModel(
+                                id: item.meal.id,
+                                name: item.meal.name,
+                                category: item.meal.category,
+                                area: item.meal.area,
+                                thumbnailUrl: item.meal.thumbnailUrl,
+                              ),
+                            )
+                            .toList(),
+                        itemCount: state.itemCount,
+                      );
+                      if (!context.mounted) return;
+                      context.read<CartCubit>().clearAll();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(context.l10n.orderPlaced)),
+                      );
+                    },
+                    icon: const Icon(Icons.receipt_long_rounded),
+                    label: Text(context.l10n.placeOrder),
                   ),
                 ),
-                title: Text(
-                  item.meal.name,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                subtitle: Text(
-                  item.meal.category,
-                  style: Theme.of(ctx).textTheme.bodySmall,
-                ),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      '×${item.quantity}',
-                      style: Theme.of(ctx).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    IconButton(
-                      tooltip: context.l10n.removeItem,
-                      icon: Icon(
-                        Icons.remove_circle_outline_rounded,
-                        color: Theme.of(ctx).colorScheme.error,
-                      ),
-                      onPressed: () =>
-                          ctx.read<CartCubit>().removeItem(item.meal.id),
-                    ),
-                  ],
-                ),
-              );
-            },
+              ),
+            ],
           );
         },
       ),

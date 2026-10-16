@@ -35,4 +35,6 @@ class MealDataSourceFactory {
       rethrow;
     }
   }
+
+  Future<MealModel> getMealById(String id) => _remote.getMealById(id);
 }

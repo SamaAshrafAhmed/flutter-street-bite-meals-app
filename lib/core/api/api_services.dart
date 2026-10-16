@@ -11,4 +11,7 @@ abstract class ApiServices {
 
   @GET(ApiEndpoints.searchMealsByLetter)
   Future<MealsResponse> getMealsByLetter(@Query('f') String letter);
+
+  @GET(ApiEndpoints.mealDetails)
+  Future<MealsResponse> getMealById(@Query('i') String id);
 }

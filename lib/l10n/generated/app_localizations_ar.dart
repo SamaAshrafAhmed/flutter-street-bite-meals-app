@@ -65,6 +65,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profileTab => 'الملف الشخصي';
 
   @override
+  String get ordersTab => 'الطلبات';
+
+  @override
   String get profileTitle => 'الملف الشخصي';
 
   @override
@@ -195,4 +198,66 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get mealsError => 'تعذر تحميل الوجبات';
+
+  @override
+  String get favoriteAction => 'حفظ في المفضلة';
+
+  @override
+  String get instructionsLabel => 'طريقة التحضير';
+
+  @override
+  String get instructionsUnavailable => 'طريقة التحضير غير متاحة حالياً.';
+
+  @override
+  String get nearbyVendors => 'البائعون القريبون';
+
+  @override
+  String get ratingFive => 'التقييم 5.0';
+
+  @override
+  String get placeOrder => 'تأكيد الطلب';
+
+  @override
+  String get orderPlaced => 'تم تأكيد الطلب بنجاح';
+
+  @override
+  String get ordersHistory => 'سجل الطلبات';
+
+  @override
+  String get noOrders => 'لا توجد طلبات بعد';
+
+  @override
+  String itemsCount(int count) {
+    return '$count عناصر';
+  }
+
+  @override
+  String get cairoVendor => 'وجبات شارع القاهرة';
+
+  @override
+  String get alexandriaVendor => 'مشويات الإسكندرية';
+
+  @override
+  String get dubaiVendor => 'شاورما دبي';
+
+  @override
+  String get ammanVendor => 'فلافل عمان';
+
+  @override
+  String get riyadhVendor => 'وجبات الرياض';
+
+  @override
+  String get egyptianCuisine => 'مصرية';
+
+  @override
+  String get mediterraneanCuisine => 'متوسطية';
+
+  @override
+  String get arabianCuisine => 'عربية';
+
+  @override
+  String get levantineCuisine => 'شامية';
+
+  @override
+  String get saudiCuisine => 'سعودية';
 }

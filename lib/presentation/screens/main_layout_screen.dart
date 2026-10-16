@@ -7,6 +7,7 @@ import 'package:street_bite/presentation/screens/cart_screen.dart';
 import 'package:street_bite/presentation/screens/favorites_screen.dart';
 import 'package:street_bite/presentation/screens/home_screen.dart';
 import 'package:street_bite/presentation/screens/profile_screen.dart';
+import 'package:street_bite/presentation/screens/orders_screen.dart';
 import 'package:street_bite/core/utils/localization.dart';
 
 class MainLayoutScreen extends StatefulWidget {
@@ -19,16 +20,12 @@ class MainLayoutScreen extends StatefulWidget {
 class _MainLayoutScreenState extends State<MainLayoutScreen> {
   int _currentIndex = 0;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
   static const List<Widget> _tabs = [
     HomeScreen(),
     FavoritesScreen(),
     CartScreen(),
     ProfileScreen(),
+    OrdersScreen(),
   ];
 
   @override
@@ -71,6 +68,11 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
                 icon: const Icon(Icons.person_outline_rounded),
                 selectedIcon: const Icon(Icons.person_rounded),
                 label: context.l10n.profileTab,
+              ),
+              NavigationDestination(
+                icon: const Icon(Icons.receipt_long_outlined),
+                selectedIcon: const Icon(Icons.receipt_long_rounded),
+                label: context.l10n.ordersTab,
               ),
             ],
           ),

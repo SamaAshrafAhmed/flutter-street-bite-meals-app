@@ -6,6 +6,7 @@ class MealModel {
   final String category;
   final String area;
   final String thumbnailUrl;
+  final String instructions;
 
   const MealModel({
     required this.id,
@@ -13,6 +14,7 @@ class MealModel {
     required this.category,
     required this.area,
     required this.thumbnailUrl,
+    this.instructions = '',
   });
 
   factory MealModel.fromJson(Map<String, dynamic> json) => MealModel(
@@ -21,6 +23,7 @@ class MealModel {
     category: (json['strCategory'] as String?) ?? '',
     area: (json['strArea'] as String?) ?? '',
     thumbnailUrl: (json['strMealThumb'] as String?) ?? '',
+    instructions: (json['strInstructions'] as String?) ?? '',
   );
 
   Map<String, dynamic> toJson() => {
@@ -29,6 +32,7 @@ class MealModel {
     'strCategory': category,
     'strArea': area,
     'strMealThumb': thumbnailUrl,
+    'strInstructions': instructions,
   };
 
   MealEntity toEntity() => MealEntity(
@@ -37,5 +41,6 @@ class MealModel {
     category: category,
     area: area,
     thumbnailUrl: thumbnailUrl,
+    instructions: instructions,
   );
 }
