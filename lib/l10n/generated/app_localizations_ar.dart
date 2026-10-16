@@ -232,6 +232,15 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get paymentMethod => 'طريقة الدفع';
+
+  @override
+  String get cashPayment => 'نقداً';
+
+  @override
+  String get cardPayment => 'بطاقة';
+
+  @override
   String get cairoVendor => 'وجبات شارع القاهرة';
 
   @override

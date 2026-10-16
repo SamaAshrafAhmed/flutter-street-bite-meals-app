@@ -536,6 +536,24 @@ abstract class AppLocalizations {
   /// **'{count} items'**
   String itemsCount(int count);
 
+  /// No description provided for @paymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment method'**
+  String get paymentMethod;
+
+  /// No description provided for @cashPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get cashPayment;
+
+  /// No description provided for @cardPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Card'**
+  String get cardPayment;
+
   /// No description provided for @cairoVendor.
   ///
   /// In en, this message translates to:

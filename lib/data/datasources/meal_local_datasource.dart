@@ -31,6 +31,14 @@ class MealLocalDataSource {
     final jsonStr = json.encode(meals.map((m) => m.toJson()).toList());
     await _prefs.setString(_cacheKey, jsonStr);
   }
+
+  Future<MealModel?> getCachedMealById(String id) async {
+    final meals = await getCachedMeals();
+    for (final meal in meals) {
+      if (meal.id == id) return meal;
+    }
+    return null;
+  }
 }
 
 /*

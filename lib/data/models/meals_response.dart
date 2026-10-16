@@ -11,4 +11,8 @@ class MealsResponse {
         .map(MealModel.fromJson)
         .toList(),
   );
+
+  Map<String, dynamic> toJson() => {
+    'meals': meals?.map((meal) => meal.toJson()).toList(),
+  };
 }

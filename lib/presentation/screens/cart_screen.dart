@@ -3,11 +3,27 @@ import 'package:street_bite/core/utils/localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/cart_cubit.dart';
 import '../cubit/cart_state.dart';
-import '../../data/models/meal_model.dart';
 import '../../data/services/firestore_service.dart';
+import '../../domain/services/payment_method.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return _CartBody();
+  }
+}
+
+class _CartBody extends StatefulWidget {
+  const _CartBody();
+
+  @override
+  State<_CartBody> createState() => _CartBodyState();
+}
+
+class _CartBodyState extends State<_CartBody> {
+  PaymentMethod _payment = CashPayment();
 
   @override
   Widget build(BuildContext context) {
@@ -108,31 +124,66 @@ class CartScreen extends StatelessWidget {
               ),
               SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: FilledButton.icon(
-                    onPressed: () async {
-                      await FirestoreService.instance.saveOrder(
-                        meals: state.items
-                            .map(
-                              (item) => MealModel(
-                                id: item.meal.id,
-                                name: item.meal.name,
-                                category: item.meal.category,
-                                area: item.meal.area,
-                                thumbnailUrl: item.meal.thumbnailUrl,
-                              ),
-                            )
-                            .toList(),
-                        itemCount: state.itemCount,
-                      );
-                      if (!context.mounted) return;
-                      context.read<CartCubit>().clearAll();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(context.l10n.orderPlaced)),
-                      );
-                    },
-                    icon: const Icon(Icons.receipt_long_rounded),
-                    label: Text(context.l10n.placeOrder),
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                  child: Column(
+                    children: [
+                      DropdownButtonFormField<String>(
+                        initialValue: _payment.name,
+                        decoration: InputDecoration(
+                          labelText: context.l10n.paymentMethod,
+                          prefixIcon: const Icon(Icons.payments_outlined),
+                        ),
+                        items: [
+                          DropdownMenuItem(
+                            value: 'cash',
+                            child: Text(context.l10n.cashPayment),
+                          ),
+                          DropdownMenuItem(
+                            value: 'card',
+                            child: Text(context.l10n.cardPayment),
+                          ),
+                        ],
+                        onChanged: (value) => setState(() {
+                          _payment = value == 'card'
+                              ? CardPayment()
+                              : CashPayment();
+                        }),
+                      ),
+                      const SizedBox(height: 12),
+                      FilledButton.icon(
+                        onPressed: () async {
+                          final itemCount = state.itemCount;
+                          await _payment.pay(amount: itemCount.toDouble());
+                          await FirestoreService.instance.saveOrder(
+                            items: state.items
+                                .map(
+                                  (item) => {
+                                    'quantity': item.quantity,
+                                    'meal': {
+                                      'id': item.meal.id,
+                                      'name': item.meal.name,
+                                      'category': item.meal.category,
+                                      'area': item.meal.area,
+                                      'country': item.meal.country,
+                                      'thumbnailUrl': item.meal.thumbnailUrl,
+                                      'instructions': item.meal.instructions,
+                                    },
+                                  },
+                                )
+                                .toList(),
+                            itemCount: itemCount,
+                            paymentMethod: _payment.name,
+                          );
+                          if (!context.mounted) return;
+                          context.read<CartCubit>().clearAll();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(context.l10n.orderPlaced)),
+                          );
+                        },
+                        icon: const Icon(Icons.receipt_long_rounded),
+                        label: Text(context.l10n.placeOrder),
+                      ),
+                    ],
                   ),
                 ),
               ),

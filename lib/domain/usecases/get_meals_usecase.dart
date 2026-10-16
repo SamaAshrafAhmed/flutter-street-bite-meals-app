@@ -5,5 +5,6 @@ class GetMealsUseCase {
   final MealRepository _repository;
   const GetMealsUseCase(this._repository);
 
-  Future<List<MealEntity>> call() => _repository.getMeals();
+  Future<List<MealEntity>> call({bool forceRefresh = false}) =>
+      _repository.getMeals(forceRefresh: forceRefresh);
 }

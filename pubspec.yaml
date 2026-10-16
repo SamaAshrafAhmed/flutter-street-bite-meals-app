@@ -37,7 +37,6 @@ dependencies:
   retrofit: ^4.4.2
   get_it: ^9.3.0
   shared_preferences: ^2.5.5
-  pretty_dio_logger: ^1.4.0
   firebase_core: ^4.15.0
   firebase_auth: ^6.7.0
   cloud_firestore: ^6.10.0

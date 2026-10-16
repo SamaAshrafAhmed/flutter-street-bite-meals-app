@@ -38,8 +38,9 @@ class FirestoreService {
   }
 
   Future<void> saveOrder({
-    required List<MealModel> meals,
+    required List<Map<String, dynamic>> items,
     required int itemCount,
+    required String paymentMethod,
   }) async {
     final user = _auth.currentUser;
     if (user == null) return;
@@ -50,7 +51,8 @@ class FirestoreService {
         .add({
           'createdAt': FieldValue.serverTimestamp(),
           'itemCount': itemCount,
-          'meals': meals.map((meal) => meal.toJson()).toList(),
+          'paymentMethod': paymentMethod,
+          'items': items,
         });
   }
 

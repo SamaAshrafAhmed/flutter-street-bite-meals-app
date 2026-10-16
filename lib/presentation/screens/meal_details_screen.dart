@@ -46,6 +46,7 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
         name: _meal.name,
         category: _meal.category,
         area: _meal.area,
+        country: _meal.country,
         thumbnailUrl: _meal.thumbnailUrl,
         instructions: _meal.instructions,
       ),
@@ -102,6 +103,11 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
                       avatar: const Icon(Icons.public_outlined, size: 18),
                       label: Text(_meal.area),
                     ),
+                    if (_meal.country.isNotEmpty)
+                      Chip(
+                        avatar: const Icon(Icons.flag_outlined, size: 18),
+                        label: Text(_meal.country),
+                      ),
                   ],
                 ),
                 const SizedBox(height: 20),
