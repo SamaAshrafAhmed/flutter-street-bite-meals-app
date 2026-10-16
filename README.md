@@ -2,6 +2,12 @@
 
 A new Flutter project.
 
+## Localization
+
+The app uses Flutter's built-in localization generation. Translation resources
+are stored in `lib/l10n/app_en.arb` and `lib/l10n/app_ar.arb`; run `flutter pub
+get` after changing an ARB file to regenerate `AppLocalizations`.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
