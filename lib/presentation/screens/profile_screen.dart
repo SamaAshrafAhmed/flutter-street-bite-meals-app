@@ -143,8 +143,22 @@ class _ProfileBodyState extends State<_ProfileBody> {
   }
 
   Future<void> _loadPhoto() async {
-    final photo = await FirestoreService.instance.loadProfilePhoto();
-    if (mounted) setState(() => _photoBase64 = photo);
+    try {
+      final photo = await FirestoreService.instance.loadProfilePhoto();
+      if (mounted) setState(() => _photoBase64 = photo);
+    } on FirebaseException {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(context.l10n.firebaseDataError)));
+      }
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(context.l10n.errorUnknown)));
+      }
+    }
   }
 
   Future<void> _loadDeviceDetails() async {

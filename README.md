@@ -35,7 +35,16 @@ Patterns used:
 - **Builder:** `UserEntityBuilder` keeps authenticated profile construction explicit and extensible.
 - **Factory:** `MealRepositoryFactory` selects a remote or cached repository implementation based on normal loading versus explicit refresh.
 - **Singleton:** `FirestoreService.instance` provides one user-data gateway.
+- **Strategy:** `CashPayment` and `CardPayment` implement `PaymentMethod`, so checkout can switch payment behavior without changing cart/order code.
+- **Cubit:** `AuthCubit`, `MealsCubit`, and `CartCubit` isolate state transitions from widgets, making loading, success, and failure states testable.
 - **Dependency injection:** GetIt wires interfaces, data sources, repositories, use cases, and Cubits in one composition root.
+
+The data boundary catches Dio/network failures and falls back to cached meals
+when possible. Authentication, profile, favourites, orders, and checkout catch
+Firebase failures at their UI/state boundary and show localized friendly
+messages instead of exposing raw exceptions. Unexpected failures are still
+handled as a generic localized error; they are never converted into a
+false-success state.
 
 ## Setup
 

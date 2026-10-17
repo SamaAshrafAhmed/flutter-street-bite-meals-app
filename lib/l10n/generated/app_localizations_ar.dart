@@ -197,6 +197,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get errorUnknown => 'حدث خطأ ما';
 
   @override
+  String get firebaseDataError =>
+      'تعذر الوصول إلى بيانات حسابك. حاول مرة أخرى.';
+
+  @override
   String get mealsError => 'تعذر تحميل الوجبات';
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/dependency_injection/injection.dart';
@@ -40,18 +41,32 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
   }
 
   Future<void> _toggleFavorite() async {
-    await FirestoreService.instance.toggleFavorite(
-      MealModel(
-        id: _meal.id,
-        name: _meal.name,
-        category: _meal.category,
-        area: _meal.area,
-        country: _meal.country,
-        thumbnailUrl: _meal.thumbnailUrl,
-        instructions: _meal.instructions,
-      ),
-    );
-    if (mounted) setState(() => _favorite = !_favorite);
+    try {
+      await FirestoreService.instance.toggleFavorite(
+        MealModel(
+          id: _meal.id,
+          name: _meal.name,
+          category: _meal.category,
+          area: _meal.area,
+          country: _meal.country,
+          thumbnailUrl: _meal.thumbnailUrl,
+          instructions: _meal.instructions,
+        ),
+      );
+      if (mounted) setState(() => _favorite = !_favorite);
+    } on FirebaseException {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(context.l10n.firebaseDataError)));
+      }
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(context.l10n.errorUnknown)));
+      }
+    }
   }
 
   @override

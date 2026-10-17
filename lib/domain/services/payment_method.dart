@@ -1,4 +1,5 @@
-/// Common payment contract keeps checkout independent from payment strategy.
+// Common payment contract keeps checkout independent from payment strategy.
+// Strategy contract keeps checkout independent from a payment mechanism.
 abstract interface class PaymentMethod {
   String get name;
   Future<void> pay({required double amount});

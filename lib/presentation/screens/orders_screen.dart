@@ -17,6 +17,9 @@ class OrdersScreen extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
+          if (snapshot.hasError) {
+            return Center(child: Text(context.l10n.firebaseDataError));
+          }
           final orders = snapshot.data?.docs ?? const [];
           if (orders.isEmpty) {
             return Center(child: Text(context.l10n.noOrders));
