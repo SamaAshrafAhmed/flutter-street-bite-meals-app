@@ -470,6 +470,12 @@ abstract class AppLocalizations {
   /// **'Something went wrong'**
   String get errorUnknown;
 
+  /// No description provided for @firebaseDataError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to access your account data. Please try again.'**
+  String get firebaseDataError;
+
   /// No description provided for @mealsError.
   ///
   /// In en, this message translates to:

@@ -18,6 +18,9 @@ class FavoritesScreen extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
+          if (snapshot.hasError) {
+            return Center(child: Text(context.l10n.firebaseDataError));
+          }
           final meals =
               snapshot.data?.docs
                   .map((doc) => MealModel.fromJson(doc.data()))

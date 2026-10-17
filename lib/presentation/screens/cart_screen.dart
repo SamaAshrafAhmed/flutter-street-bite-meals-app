@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:street_bite/core/utils/localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import '../cubit/cart_cubit.dart';
 import '../cubit/cart_state.dart';
 import '../../data/services/firestore_service.dart';
@@ -153,32 +154,48 @@ class _CartBodyState extends State<_CartBody> {
                       FilledButton.icon(
                         onPressed: () async {
                           final itemCount = state.itemCount;
-                          await _payment.pay(amount: itemCount.toDouble());
-                          await FirestoreService.instance.saveOrder(
-                            items: state.items
-                                .map(
-                                  (item) => {
-                                    'quantity': item.quantity,
-                                    'meal': {
-                                      'id': item.meal.id,
-                                      'name': item.meal.name,
-                                      'category': item.meal.category,
-                                      'area': item.meal.area,
-                                      'country': item.meal.country,
-                                      'thumbnailUrl': item.meal.thumbnailUrl,
-                                      'instructions': item.meal.instructions,
+                          try {
+                            await _payment.pay(amount: itemCount.toDouble());
+                            await FirestoreService.instance.saveOrder(
+                              items: state.items
+                                  .map(
+                                    (item) => {
+                                      'quantity': item.quantity,
+                                      'meal': {
+                                        'id': item.meal.id,
+                                        'name': item.meal.name,
+                                        'category': item.meal.category,
+                                        'area': item.meal.area,
+                                        'country': item.meal.country,
+                                        'thumbnailUrl': item.meal.thumbnailUrl,
+                                        'instructions': item.meal.instructions,
+                                      },
                                     },
-                                  },
-                                )
-                                .toList(),
-                            itemCount: itemCount,
-                            paymentMethod: _payment.name,
-                          );
-                          if (!context.mounted) return;
-                          context.read<CartCubit>().clearAll();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(context.l10n.orderPlaced)),
-                          );
+                                  )
+                                  .toList(),
+                              itemCount: itemCount,
+                              paymentMethod: _payment.name,
+                            );
+                            if (!context.mounted) return;
+                            context.read<CartCubit>().clearAll();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(context.l10n.orderPlaced)),
+                            );
+                          } on FirebaseException {
+                            if (!context.mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(context.l10n.firebaseDataError),
+                              ),
+                            );
+                          } catch (_) {
+                            if (!context.mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(context.l10n.errorUnknown),
+                              ),
+                            );
+                          }
                         },
                         icon: const Icon(Icons.receipt_long_rounded),
                         label: Text(context.l10n.placeOrder),

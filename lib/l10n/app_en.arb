@@ -63,6 +63,7 @@
   "errorTooManyRequests": "Too many attempts. Please try again later",
   "errorInvalidCredential": "Invalid credentials",
   "errorUnknown": "Something went wrong",
+  "firebaseDataError": "Unable to access your account data. Please try again.",
   "mealsError": "Unable to load meals",
   "favoriteAction": "Save favorite",
   "instructionsLabel": "Instructions",

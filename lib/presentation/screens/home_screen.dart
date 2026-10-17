@@ -102,9 +102,11 @@ class _ErrorBody extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              messageKey == 'mealsError'
-                  ? context.l10n.mealsError
-                  : context.l10n.errorUnknown,
+              switch (messageKey) {
+                'errorNetworkRequest' => context.l10n.errorNetworkRequest,
+                'mealsError' => context.l10n.mealsError,
+                _ => context.l10n.errorUnknown,
+              },
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyLarge,
             ),

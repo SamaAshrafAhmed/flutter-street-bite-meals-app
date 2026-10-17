@@ -9,6 +9,8 @@ import 'meal_repository_impl.dart';
 /// A normal load chooses the cache when it contains meals. A forced refresh
 /// chooses the remote repository; that repository still falls back to cache if
 /// the refresh request fails.
+/// Factory that hides the cache-versus-network repository selection from the
+/// domain layer and keeps refresh policy in one place.
 class MealRepositoryFactory {
   final MealRemoteDataSource _remote;
   final MealLocalDataSource _local;

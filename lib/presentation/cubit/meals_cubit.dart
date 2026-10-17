@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:dio/dio.dart';
 
 import '../../domain/usecases/get_meals_usecase.dart';
 import 'meals_state.dart';
@@ -26,6 +27,8 @@ class MealsCubit extends Cubit<MealsState> {
       } else {
         emit(MealsLoaded(meals));
       }
+    } on DioException {
+      emit(MealsError('errorNetworkRequest'));
     } catch (_) {
       emit(MealsError('mealsError'));
     }

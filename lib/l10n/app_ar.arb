@@ -63,6 +63,7 @@
   "errorTooManyRequests": "محاولات كثيرة. حاول لاحقاً",
   "errorInvalidCredential": "بيانات الدخول غير صحيحة",
   "errorUnknown": "حدث خطأ ما",
+  "firebaseDataError": "تعذر الوصول إلى بيانات حسابك. حاول مرة أخرى.",
   "mealsError": "تعذر تحميل الوجبات",
   "favoriteAction": "حفظ في المفضلة",
   "instructionsLabel": "طريقة التحضير",

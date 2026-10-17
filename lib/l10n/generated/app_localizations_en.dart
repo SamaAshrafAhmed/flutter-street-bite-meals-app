@@ -198,6 +198,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorUnknown => 'Something went wrong';
 
   @override
+  String get firebaseDataError =>
+      'Unable to access your account data. Please try again.';
+
+  @override
   String get mealsError => 'Unable to load meals';
 
   @override

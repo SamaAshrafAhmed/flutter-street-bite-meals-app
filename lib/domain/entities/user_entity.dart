@@ -7,6 +7,8 @@ class UserEntity {
 }
 
 /// Builder keeps user construction explicit as profile fields grow.
+/// Builder keeps optional Firebase profile fields explicit while constructing
+/// the immutable domain user entity.
 class UserEntityBuilder {
   String? _id;
   String? _email;
