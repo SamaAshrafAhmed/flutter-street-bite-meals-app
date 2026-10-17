@@ -214,7 +214,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nearbyVendors => 'Nearby Vendors';
 
   @override
-  String get ratingFive => 'Rating 5.0';
+  String ratingLabel(String rating) {
+    return 'Rating $rating';
+  }
 
   @override
   String get placeOrder => 'Place order';
@@ -243,32 +245,75 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cardPayment => 'Card';
 
   @override
+  String get authenticateProfile => 'Authenticate to open profile';
+
+  @override
+  String get biometricReason => 'Authenticate to open your StreetBite profile';
+
+  @override
+  String get biometricUnavailable =>
+      'Set up a fingerprint or other biometric on this device, then try again.';
+
+  @override
+  String get biometricFailed => 'Authentication failed. Try again.';
+
+  @override
+  String get guestUser => 'StreetBite user';
+
+  @override
+  String get emailUnavailable => 'Email unavailable';
+
+  @override
+  String get profilePhotoError => 'Unable to update profile photo.';
+
+  @override
+  String get deviceDetails => 'Device details';
+
+  @override
+  String get deviceModel => 'Model';
+
+  @override
+  String get deviceManufacturer => 'Manufacturer';
+
+  @override
+  String get deviceSystem => 'System';
+
+  @override
+  String get deviceVersion => 'Version';
+
+  @override
+  String get deviceId => 'Device ID';
+
+  @override
+  String get deviceDetailsUnavailable => 'Device details are unavailable.';
+
+  @override
   String get cairoVendor => 'Cairo Street Bites';
 
   @override
   String get alexandriaVendor => 'Alexandria Grill';
 
   @override
-  String get dubaiVendor => 'Dubai Shawarma';
+  String get gizaVendor => 'Giza Koshary Corner';
 
   @override
-  String get ammanVendor => 'Amman Falafel';
+  String get luxorVendor => 'Luxor Street Kitchen';
 
   @override
-  String get riyadhVendor => 'Riyadh Bites';
+  String get aswanVendor => 'Aswan Nubian Bites';
 
   @override
   String get egyptianCuisine => 'Egyptian';
 
   @override
-  String get mediterraneanCuisine => 'Mediterranean';
+  String get alexandriaCuisine => 'Alexandrian seafood';
 
   @override
-  String get arabianCuisine => 'Arabian';
+  String get gizaCuisine => 'Koshary';
 
   @override
-  String get levantineCuisine => 'Levantine';
+  String get luxorCuisine => 'Upper Egyptian';
 
   @override
-  String get saudiCuisine => 'Saudi';
+  String get aswanCuisine => 'Nubian';
 }

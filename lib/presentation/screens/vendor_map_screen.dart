@@ -10,32 +10,37 @@ class VendorMapScreen extends StatelessWidget {
     (
       nameKey: 'cairoVendor',
       cuisineKey: 'egyptianCuisine',
+      rating: '4.6',
       lat: 30.0444,
       lng: 31.2357,
     ),
     (
       nameKey: 'alexandriaVendor',
-      cuisineKey: 'mediterraneanCuisine',
+      cuisineKey: 'alexandriaCuisine',
+      rating: '4.8',
       lat: 31.2001,
       lng: 29.9187,
     ),
     (
-      nameKey: 'dubaiVendor',
-      cuisineKey: 'arabianCuisine',
-      lat: 25.2048,
-      lng: 55.2708,
+      nameKey: 'gizaVendor',
+      cuisineKey: 'gizaCuisine',
+      rating: '4.8',
+      lat: 29.9792,
+      lng: 31.1342,
     ),
     (
-      nameKey: 'ammanVendor',
-      cuisineKey: 'levantineCuisine',
-      lat: 31.9539,
-      lng: 35.9106,
+      nameKey: 'luxorVendor',
+      cuisineKey: 'luxorCuisine',
+      rating: '4.7',
+      lat: 25.6872,
+      lng: 32.6396,
     ),
     (
-      nameKey: 'riyadhVendor',
-      cuisineKey: 'saudiCuisine',
-      lat: 24.7136,
-      lng: 46.6753,
+      nameKey: 'aswanVendor',
+      cuisineKey: 'aswanCuisine',
+      rating: '4.9',
+      lat: 24.0889,
+      lng: 32.8998,
     ),
   ];
 
@@ -56,7 +61,8 @@ class VendorMapScreen extends StatelessWidget {
               infoWindow: InfoWindow(
                 title: _vendorName(context, vendor.nameKey),
                 snippet:
-                    '${_cuisineName(context, vendor.cuisineKey)} • ${context.l10n.ratingFive}',
+                    '${_cuisineName(context, vendor.cuisineKey)} • '
+                    '${context.l10n.ratingLabel(vendor.rating)}',
               ),
             ),
         },
@@ -67,16 +73,16 @@ class VendorMapScreen extends StatelessWidget {
   String _vendorName(BuildContext context, String key) => switch (key) {
     'cairoVendor' => context.l10n.cairoVendor,
     'alexandriaVendor' => context.l10n.alexandriaVendor,
-    'dubaiVendor' => context.l10n.dubaiVendor,
-    'ammanVendor' => context.l10n.ammanVendor,
-    _ => context.l10n.riyadhVendor,
+    'gizaVendor' => context.l10n.gizaVendor,
+    'luxorVendor' => context.l10n.luxorVendor,
+    _ => context.l10n.aswanVendor,
   };
 
   String _cuisineName(BuildContext context, String key) => switch (key) {
     'egyptianCuisine' => context.l10n.egyptianCuisine,
-    'mediterraneanCuisine' => context.l10n.mediterraneanCuisine,
-    'arabianCuisine' => context.l10n.arabianCuisine,
-    'levantineCuisine' => context.l10n.levantineCuisine,
-    _ => context.l10n.saudiCuisine,
+    'alexandriaCuisine' => context.l10n.alexandriaCuisine,
+    'gizaCuisine' => context.l10n.gizaCuisine,
+    'luxorCuisine' => context.l10n.luxorCuisine,
+    _ => context.l10n.aswanCuisine,
   };
 }

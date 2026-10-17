@@ -11,6 +11,11 @@ class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  DocumentReference<Map<String, dynamic>>? get _profile {
+    final user = _auth.currentUser;
+    return user == null ? null : _firestore.collection('users').doc(user.uid);
+  }
+
   CollectionReference<Map<String, dynamic>>? get _favorites {
     final user = _auth.currentUser;
     return user == null
@@ -35,6 +40,25 @@ class FirestoreService {
     } else {
       await doc.set(meal.toJson());
     }
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> watchFavorites() {
+    final favorites = _favorites;
+    return favorites?.snapshots() ?? const Stream.empty();
+  }
+
+  Future<String?> loadProfilePhoto() async {
+    final snapshot = await _profile?.get();
+    return snapshot?.data()?['photoBase64'] as String?;
+  }
+
+  Future<void> saveProfilePhoto(String base64Image) async {
+    await _profile?.set({
+      'displayName': _auth.currentUser?.displayName,
+      'email': _auth.currentUser?.email,
+      'photoBase64': base64Image,
+      'updatedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
   }
 
   Future<void> saveOrder({
