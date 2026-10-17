@@ -17,6 +17,30 @@ Users authenticate with Firebase, discover live meals from TheMealDB, cache the 
 - Light/dark theme switching using persisted `ThemeCubit` state.
 - Nearby vendor map bonus screen with five hardcoded Egyptian locations (Cairo, Alexandria, Giza, Luxor, and Aswan); each marker shows the vendor name, cuisine type, and rating in its info window.
 
+## Screenshots
+
+### Onboarding and authentication
+
+| Splash | Login | Sign up |
+|---|---|---|
+| ![Splash screen](screenshots/splash_screen.png) | ![Login screen](screenshots/login.png) | ![Sign up screen](screenshots/sign_up.png) |
+
+### Discovery and ordering
+
+| Home - English | Home - Arabic | Meal details |
+|---|---|---|
+| ![Home screen in English](screenshots/home_english.png) | ![Home screen in Arabic](screenshots/home_arabic.png) | ![Meal details](screenshots/meal_details.png) |
+
+| Cart | Vendor map | Dark mode |
+|---|---|---|
+| ![Cart](screenshots/cart.png) | ![Egyptian vendor map](screenshots/vendor_map.png) | ![Dark mode](screenshots/dark_mode.png) |
+
+### Profile and security
+
+| Profile | Biometric authentication |
+|---|---|
+| ![Profile](screenshots/profile.png) | ![Biometric authentication](screenshots/biometric_auth.png) |
+
 ## Architecture
 
 The project follows Clean Architecture:
@@ -68,6 +92,39 @@ Edit [lib/l10n/app_en.arb](lib/l10n/app_en.arb) and
 [lib/l10n/app_ar.arb](lib/l10n/app_ar.arb). Flutter generates
 `AppLocalizations` during `flutter pub get`; do not add hard-coded user-facing
 strings to widgets.
+
+## Firebase App Distribution
+
+StreetBite uses Firebase App Distribution to deliver release APKs to beta
+testers. The release workflow is:
+
+1. Build a release APK:
+
+   ```bash
+   flutter build apk --release
+   ```
+
+2. Upload the APK from `build/app/outputs/flutter-apk/app-release.apk` using
+   the Firebase console, or with the Firebase CLI:
+
+   ```bash
+   firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
+     --app YOUR_FIREBASE_ANDROID_APP_ID \
+     --release-notes "StreetBite V1.0 beta release" \
+     --testers tester-one@example.com,tester-two@example.com
+   ```
+
+3. Confirm that the release appears in the App Distribution dashboard.
+4. Invite at least two tester email addresses and verify that each tester receives the release invitation.
+5. Testers install the APK from the invitation and report feedback for the beta build.
+
+The dashboard evidence is included below:
+
+![Firebase App Distribution release and testers](screenshots/firebase_app_distribution.png)
+
+Replace `YOUR_FIREBASE_ANDROID_APP_ID` and the tester addresses with the
+project-specific Firebase values before running the command. Firebase
+credentials and API keys must not be committed to the repository.
 
 ## Permissions and services
 

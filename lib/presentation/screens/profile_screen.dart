@@ -14,7 +14,6 @@ import 'package:street_bite/presentation/cubit/auth_cubit.dart';
 import 'package:street_bite/presentation/cubit/auth_state.dart';
 import 'package:street_bite/presentation/cubit/cart_cubit.dart';
 import 'package:street_bite/presentation/screens/login_screen.dart';
-
 import '../../core/theming/cubit/theme_cubit.dart';
 import '../../data/services/firestore_service.dart';
 
@@ -371,6 +370,7 @@ class _ProfileBodyState extends State<_ProfileBody> {
                 context.setAppLocale(Locale(selected.first)),
           ),
           const SizedBox(height: 32),
+          const SizedBox(height: 16),
           OutlinedButton.icon(
             onPressed: () => _showLogoutDialog(context),
             icon: const Icon(Icons.logout_rounded),
