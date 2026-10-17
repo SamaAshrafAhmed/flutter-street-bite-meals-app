@@ -6,6 +6,8 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>StreetBite uses biometric authentication to protect your profile.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Street Bite</string>
 	<key>CFBundleExecutable</key>

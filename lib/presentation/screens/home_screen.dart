@@ -172,7 +172,7 @@ class _HomeBody extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
-                childAspectRatio: 0.65,
+                childAspectRatio: 0.58,
               ),
               delegate: SliverChildBuilderDelegate(
                 (ctx, idx) => MealCardWidget(meal: meals[idx]),

@@ -22,6 +22,7 @@ class MealCardWidget extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Expanded(
               flex: 3,
@@ -58,7 +59,7 @@ class MealCardWidget extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    const Spacer(),
+                    const SizedBox(height: 6),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -73,7 +74,8 @@ class MealCardWidget extends StatelessWidget {
                           );
                         },
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          minimumSize: const Size.fromHeight(32),
+                          padding: EdgeInsets.zero,
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         child: Row(
@@ -81,10 +83,16 @@ class MealCardWidget extends StatelessWidget {
                           children: [
                             const Icon(
                               Icons.add_shopping_cart_rounded,
-                              size: 18,
+                              size: 16,
                             ),
-                            const SizedBox(width: 6),
-                            Text(context.l10n.addToCart),
+                            const SizedBox(width: 4),
+                            Flexible(
+                              child: Text(
+                                context.l10n.addToCart,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
                           ],
                         ),
                       ),

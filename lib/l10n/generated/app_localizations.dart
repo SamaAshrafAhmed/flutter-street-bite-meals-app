@@ -500,11 +500,11 @@ abstract class AppLocalizations {
   /// **'Nearby Vendors'**
   String get nearbyVendors;
 
-  /// No description provided for @ratingFive.
+  /// No description provided for @ratingLabel.
   ///
   /// In en, this message translates to:
-  /// **'Rating 5.0'**
-  String get ratingFive;
+  /// **'Rating {rating}'**
+  String ratingLabel(String rating);
 
   /// No description provided for @placeOrder.
   ///
@@ -554,6 +554,90 @@ abstract class AppLocalizations {
   /// **'Card'**
   String get cardPayment;
 
+  /// No description provided for @authenticateProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Authenticate to open profile'**
+  String get authenticateProfile;
+
+  /// No description provided for @biometricReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Authenticate to open your StreetBite profile'**
+  String get biometricReason;
+
+  /// No description provided for @biometricUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Set up a fingerprint or other biometric on this device, then try again.'**
+  String get biometricUnavailable;
+
+  /// No description provided for @biometricFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication failed. Try again.'**
+  String get biometricFailed;
+
+  /// No description provided for @guestUser.
+  ///
+  /// In en, this message translates to:
+  /// **'StreetBite user'**
+  String get guestUser;
+
+  /// No description provided for @emailUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Email unavailable'**
+  String get emailUnavailable;
+
+  /// No description provided for @profilePhotoError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to update profile photo.'**
+  String get profilePhotoError;
+
+  /// No description provided for @deviceDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Device details'**
+  String get deviceDetails;
+
+  /// No description provided for @deviceModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Model'**
+  String get deviceModel;
+
+  /// No description provided for @deviceManufacturer.
+  ///
+  /// In en, this message translates to:
+  /// **'Manufacturer'**
+  String get deviceManufacturer;
+
+  /// No description provided for @deviceSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System'**
+  String get deviceSystem;
+
+  /// No description provided for @deviceVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get deviceVersion;
+
+  /// No description provided for @deviceId.
+  ///
+  /// In en, this message translates to:
+  /// **'Device ID'**
+  String get deviceId;
+
+  /// No description provided for @deviceDetailsUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Device details are unavailable.'**
+  String get deviceDetailsUnavailable;
+
   /// No description provided for @cairoVendor.
   ///
   /// In en, this message translates to:
@@ -566,23 +650,23 @@ abstract class AppLocalizations {
   /// **'Alexandria Grill'**
   String get alexandriaVendor;
 
-  /// No description provided for @dubaiVendor.
+  /// No description provided for @gizaVendor.
   ///
   /// In en, this message translates to:
-  /// **'Dubai Shawarma'**
-  String get dubaiVendor;
+  /// **'Giza Koshary Corner'**
+  String get gizaVendor;
 
-  /// No description provided for @ammanVendor.
+  /// No description provided for @luxorVendor.
   ///
   /// In en, this message translates to:
-  /// **'Amman Falafel'**
-  String get ammanVendor;
+  /// **'Luxor Street Kitchen'**
+  String get luxorVendor;
 
-  /// No description provided for @riyadhVendor.
+  /// No description provided for @aswanVendor.
   ///
   /// In en, this message translates to:
-  /// **'Riyadh Bites'**
-  String get riyadhVendor;
+  /// **'Aswan Nubian Bites'**
+  String get aswanVendor;
 
   /// No description provided for @egyptianCuisine.
   ///
@@ -590,29 +674,29 @@ abstract class AppLocalizations {
   /// **'Egyptian'**
   String get egyptianCuisine;
 
-  /// No description provided for @mediterraneanCuisine.
+  /// No description provided for @alexandriaCuisine.
   ///
   /// In en, this message translates to:
-  /// **'Mediterranean'**
-  String get mediterraneanCuisine;
+  /// **'Alexandrian seafood'**
+  String get alexandriaCuisine;
 
-  /// No description provided for @arabianCuisine.
+  /// No description provided for @gizaCuisine.
   ///
   /// In en, this message translates to:
-  /// **'Arabian'**
-  String get arabianCuisine;
+  /// **'Koshary'**
+  String get gizaCuisine;
 
-  /// No description provided for @levantineCuisine.
+  /// No description provided for @luxorCuisine.
   ///
   /// In en, this message translates to:
-  /// **'Levantine'**
-  String get levantineCuisine;
+  /// **'Upper Egyptian'**
+  String get luxorCuisine;
 
-  /// No description provided for @saudiCuisine.
+  /// No description provided for @aswanCuisine.
   ///
   /// In en, this message translates to:
-  /// **'Saudi'**
-  String get saudiCuisine;
+  /// **'Nubian'**
+  String get aswanCuisine;
 }
 
 class _AppLocalizationsDelegate
