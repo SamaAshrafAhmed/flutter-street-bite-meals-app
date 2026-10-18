@@ -50,9 +50,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get favoritesEmpty => 'No favorite meals yet';
 
   @override
-  String get ordersEmpty => 'No orders yet';
-
-  @override
   String get homeTab => 'Home';
 
   @override

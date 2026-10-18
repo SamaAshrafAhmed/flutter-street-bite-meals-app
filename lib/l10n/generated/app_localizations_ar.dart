@@ -50,9 +50,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get favoritesEmpty => 'لا توجد وجبات مفضلة بعد';
 
   @override
-  String get ordersEmpty => 'لا توجد طلبات بعد';
-
-  @override
   String get homeTab => 'الرئيسية';
 
   @override
