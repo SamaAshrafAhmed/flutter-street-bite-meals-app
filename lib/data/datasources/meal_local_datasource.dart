@@ -41,11 +41,3 @@ class MealLocalDataSource {
   }
 }
 
-/*
-                [
-              {"id": "1", "name": "Pizza"},                   Map
-              {"id": "2", "name": "Burger"},                  Map
-              "Hello",                                        Strings
-               123                                            Numbers
-               ]
-*/

@@ -176,12 +176,6 @@ abstract class AppLocalizations {
   /// **'No favorite meals yet'**
   String get favoritesEmpty;
 
-  /// No description provided for @ordersEmpty.
-  ///
-  /// In en, this message translates to:
-  /// **'No orders yet'**
-  String get ordersEmpty;
-
   /// No description provided for @homeTab.
   ///
   /// In en, this message translates to:
